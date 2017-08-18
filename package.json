@@ -4,12 +4,22 @@
   "description": "Amne web service",
   "main": "app.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node ./app.js"
   },
   "repository": {
     "type": "git",
     "url": "none yet"
   },
   "author": "Hayden Turek",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.8.2"
+  }
 }
