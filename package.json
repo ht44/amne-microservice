@@ -1,0 +1,15 @@
+{
+  "name": "amne-backend",
+  "version": "1.0.0",
+  "description": "Amne web service",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none yet"
+  },
+  "author": "Hayden Turek",
+  "license": "ISC"
+}
