@@ -41,20 +41,24 @@ app.post('/places', (req, res, next) => {
   Promise.all(promises).then(data => {
     data.forEach(datum => {
       parsed = JSON.parse(datum);
+
       if (parsed.error) {
+        res.json({parsed: parsed});
         const error = new Error(parsed.error.message);
         error.status = parsed.error.code;
         next(error);
       }
-      if (parsed.result) {
-        if (parsed.result.website) {
-          result.push(parsed.result.website);
-        } else  {
-          result.push(null);
-        }
-        res.json({result: result});
+
+      if (parsed.result.website) {
+        result.push(parsed.result.website);
+      } else  {
+        result.push(null);
       }
+
     });
+
+    res.json({result: result});
+
   }).catch(error => {
     res.json({message: error});
   });
