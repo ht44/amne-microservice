@@ -7,7 +7,8 @@ const morgan = require('morgan');
 const request = require('request');
 const bodyParser = require('body-parser');
 const rp = require('request-promise');
-const apiKey = 'AIzaSyAt57aFTIxEQWj8DZyWSbWBlQ4KHHSXsk8';
+const apiKey = 'AIzaSyB87efOaaHv_mu2guTvd7CdrvWixFd1ooA';
+// const apiKey = 'AIzaSyAt57aFTIxEQWj8DZyWSbWBlQ4KHHSXsk8';
 const app = express();
 if (env === 'development') {
   app.use(morgan('dev'));
@@ -29,7 +30,7 @@ app.get('/', (req, res, next) => {
 
 app.post('/places', (req, res, next) => {
   const promises = [];
-  const result = {};
+  const result = [];
   let url;
   req.body.places.forEach(placeId => {
     url = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=${apiKey}`;
@@ -39,13 +40,17 @@ app.post('/places', (req, res, next) => {
     data.forEach(datum => {
       let parsed = JSON.parse(datum);
       if (parsed.result.website) {
-        result[parsed.result.id] = parsed.result.website;
+        result.push(parsed.result.website);
       } else  {
-        result[parsed.result.id] = null;
+        result.push(null);
       }
     });
-    res.json(JSON.stringify(result));
-  });
+    console.log(result);
+    res.json({result: result});
+  }).catch(error => {
+    console.error(error);
+    res.json({error: error});
+  })
 });
 
 app.listen(port, () => {
