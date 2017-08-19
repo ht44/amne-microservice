@@ -5,7 +5,7 @@ const path = require('path');
 const request = require('request');
 const bodyParser = require('body-parser');
 const rp = require('request-promise');
-const apiKey = 'AIzaSyCAiwNeQvlHKtKOc7_QJ0mfEgVaUgo5Eu8';
+const apiKey = 'AIzaSyBUcxMTR644jrjC100EMQQbFbTVeEHxOac';
 
 const app = express();
 
