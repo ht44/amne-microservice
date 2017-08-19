@@ -1,5 +1,4 @@
 'use strict';
-const port = process.env.PORT || 3000;
 const env = process.env.NODE_ENV || 'development';
 const express = require('express');
 const path = require('path');
@@ -28,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', (req, res, next) => {
-  res.send('hello world');
+  res.send('root');
 });
 
 app.post('/places', (req, res, next) => {
@@ -56,6 +55,4 @@ app.post('/places', (req, res, next) => {
   });
 });
 
-app.listen(port, () => {
-  console.log('Running on port: ', port);
-});
+module.exports = app;
