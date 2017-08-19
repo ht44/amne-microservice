@@ -7,9 +7,12 @@ const morgan = require('morgan');
 const request = require('request');
 const bodyParser = require('body-parser');
 const rp = require('request-promise');
-const apiKey = 'AIzaSyB87efOaaHv_mu2guTvd7CdrvWixFd1ooA';
+const apiKey = 'AIzaSyCAiwNeQvlHKtKOc7_QJ0mfEgVaUgo5Eu8';
+// const apiKey = 'AIzaSyB87efOaaHv_mu2guTvd7CdrvWixFd1ooA';
 // const apiKey = 'AIzaSyAt57aFTIxEQWj8DZyWSbWBlQ4KHHSXsk8';
+
 const app = express();
+
 if (env === 'development') {
   app.use(morgan('dev'));
 }
@@ -50,7 +53,7 @@ app.post('/places', (req, res, next) => {
   }).catch(error => {
     console.error(error);
     res.json({error: error});
-  })
+  });
 });
 
 app.listen(port, () => {
