@@ -2,7 +2,7 @@
 const env = process.env.NODE_ENV || 'development';
 const express = require('express');
 const path = require('path');
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const request = require('request');
 const bodyParser = require('body-parser');
 const rp = require('request-promise');
@@ -13,7 +13,7 @@ const apiKey = 'AIzaSyCAiwNeQvlHKtKOc7_QJ0mfEgVaUgo5Eu8';
 const app = express();
 
 if (env === 'development') {
-  app.use(morgan('dev'));
+  app.use(require('morgan')('dev'));
 }
 
 app.use((req, res, next) => {
